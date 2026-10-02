@@ -1,0 +1,19 @@
+# POST http://127.0.0.1:8000/api/accounts/register/
+# Content-Type: application/json
+
+# {
+#     "full_name": "Kanchan Kotkar",
+#     "email": "kanchan@gmail.com",
+#     "password": "Kanchan123",
+#     "education": "MCA",
+#     "experience_years": 0,
+#     "target_role": null
+# }
+
+POST http://127.0.0.1:8000/api/accounts/login/
+Content-Type: application/json
+
+{
+    "email": "kanchan@gmail.com",
+    "password": "Kanchan123"
+}

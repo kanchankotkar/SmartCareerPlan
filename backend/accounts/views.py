@@ -5,9 +5,8 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import RegisterSerializer, LoginSerializer
-from rest_framework.permissions import IsAuthenticated
-
-
+from .models import User
+from .authentication import CustomJWTAuthentication
 class RegisterView(APIView):
 
     def post(self, request):
@@ -68,5 +67,23 @@ class LoginView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+# profile view
+class ProfileView(APIView):
 
-    
+    authentication_classes = [CustomJWTAuthentication]
+
+    def get(self, request):
+
+        user = request.user
+
+        return Response(
+            {
+                "user_id": user.user_id,
+                "full_name": user.full_name,
+                "email": user.email,
+                "education": user.education,
+                "experience_years": user.experience_years,
+                "target_role": user.target_role_id
+            },
+            status=status.HTTP_200_OK
+        )

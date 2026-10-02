@@ -10,10 +10,56 @@
 #     "target_role": null
 # }
 
-POST http://127.0.0.1:8000/api/accounts/login/
+# POST http://127.0.0.1:8000/api/accounts/login/
+# Content-Type: application/json
+
+# {
+#     "email": "kanchan@gmail.com",
+#     "password": "Kanchan123"
+# }
+
+# POST http://127.0.0.1:8000/api/accounts/login/
+# Content-Type: application/json
+
+# {
+#     "email": "kanchan@gmail.com",
+#     "password": "Kanchan123"
+# }
+
+# GET http://127.0.0.1:8000/api/accounts/profile/
+# Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTMzNzQ5LCJpYXQiOjE3OTA5MzM0NDksImp0aSI6IjI2YmFiYTNkYjFhZDQ2YTVhYzQxY2EwM2M2YTMxYzc0IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.-GHpeD8AZoMFzSNvQnurJHjcfKQLh_Rkq4gYuu4tWRc
+
+
+# GET http://127.0.0.1:8000/api/skills/
+
+
+# GET http://127.0.0.1:8000/api/skills
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM0Njc3LCJpYXQiOjE3OTA5MzQzNzcsImp0aSI6ImU3YzJmZjYzYzY4NDQyMmNhNjBiNTc4YWY3MTE4NDkxIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.uBoyjzoxqHlDgVaeFZzKj9szK67qFLOpDDSXsrHuvXg
+
+# POST http://127.0.0.1:8000/api/skills/user/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM0ODkwLCJpYXQiOjE3OTA5MzQ1OTAsImp0aSI6IjNkNTc2YzcwOTliNjQyZWFiNGFiYWM1MzhhOGI2ZWMwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.yqomL_0rSBMd0UUcFKHZeaVyWTeVRhTpRz-tRqwYeD8
+
+# {
+#     "skill": 1,
+#     "skill_level": "Intermediate",
+#     "years_experience": 1.0
+# }
+
+
+# GET http://127.0.0.1:8000/api/skills/user/my/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM0ODkwLCJpYXQiOjE3OTA5MzQ1OTAsImp0aSI6IjNkNTc2YzcwOTliNjQyZWFiNGFiYWM1MzhhOGI2ZWMwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.yqomL_0rSBMd0UUcFKHZeaVyWTeVRhTpRz-tRqwYeD8
+
+# GET http://127.0.0.1:8000/api/careers/
+
+# GET http://127.0.0.1:8000/api/careers/1/skills/
+
+POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM5MTM3LCJpYXQiOjE3OTA5Mzg4MzcsImp0aSI6IjZmNDNkOTc1OWRmYTRlMDM4M2JmNmExMjQ0YWEzNWVlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.grMV3oFel41Kvj1J4JyFLzkQj4KOvxInM7qX659qFSQ
 
 {
-    "email": "kanchan@gmail.com",
-    "password": "Kanchan123"
+    "role_id": 1
 }
+
+

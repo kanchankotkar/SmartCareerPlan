@@ -21,6 +21,19 @@ urlpatterns = [
         'api/careers/',
         include('careers.urls')
     ),
+
+    path('api/learning/', 
+         include('learning.urls')
+    ),
+    path(
+    'api/analytics/',
+    include('analytics.urls')
+    ),
+
+    path(
+        'api/admin-management/',
+        include('admin_management.urls')
+    ),
     
 
 

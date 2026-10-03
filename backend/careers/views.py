@@ -2,14 +2,15 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from accounts.authentication import CustomJWTAuthentication
+from skills.models import UserSkill
+
 from .models import JobRole, JobRoleSkill
 from .serializers import (
     JobRoleSerializer,
     JobRoleSkillSerializer
 )
 
-from accounts.authentication import CustomJWTAuthentication
-from skills.models import UserSkill
 
 class JobRoleListView(APIView):
 
@@ -26,6 +27,7 @@ class JobRoleListView(APIView):
             serializer.data,
             status=status.HTTP_200_OK
         )
+
 
 class RequiredSkillsView(APIView):
 
@@ -60,13 +62,18 @@ class RequiredSkillsView(APIView):
                 "required_skills": serializer.data
             },
             status=status.HTTP_200_OK
-        )  
+        )
+
 
 class SkillGapAnalysisView(APIView):
 
-    authentication_classes = [CustomJWTAuthentication]
+    authentication_classes = [
+        CustomJWTAuthentication
+    ]
 
     def post(self, request):
+
+        print("NEW SKILL GAP API IS RUNNING")
 
         role_id = request.data.get('role_id')
 
@@ -78,10 +85,6 @@ class SkillGapAnalysisView(APIView):
                 },
                 status=status.HTTP_400_BAD_REQUEST
             )
-
-        # --------------------------------
-        # 1. Find the selected job role
-        # --------------------------------
 
         role = JobRole.objects.filter(
             role_id=role_id
@@ -96,66 +99,141 @@ class SkillGapAnalysisView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # --------------------------------
-        # 2. Get required skills
-        # --------------------------------
-
         required_skills = JobRoleSkill.objects.filter(
             role=role
         ).select_related('skill')
-
-        # --------------------------------
-        # 3. Get user's skills
-        # --------------------------------
 
         user_skills = UserSkill.objects.filter(
             user=request.user
         ).select_related('skill')
 
         # --------------------------------
-        # 4. Create skill name sets
+        # Skill Level Hierarchy
         # --------------------------------
 
-        required_skill_names = {
-            item.skill.skill_name.lower()
-            for item in required_skills
-        }
-
-        user_skill_names = {
-            item.skill.skill_name.lower()
-            for item in user_skills
+        level_order = {
+            "beginner": 1,
+            "intermediate": 2,
+            "advanced": 3
         }
 
         # --------------------------------
-        # 5. Find matched skills
+        # Store user's skills
         # --------------------------------
 
-        matched_skills = (
-            required_skill_names
-            .intersection(user_skill_names)
-        )
+        user_skill_levels = {}
+
+        for user_skill in user_skills:
+
+            skill_name = (
+                user_skill.skill.skill_name.lower()
+            )
+
+            user_level = (
+                user_skill.skill_level
+                or "Beginner"
+            ).lower()
+
+            user_skill_levels[skill_name] = {
+                "level": user_level,
+                "display_level": user_skill.skill_level
+            }
 
         # --------------------------------
-        # 6. Find missing skills
+        # Compare skills
         # --------------------------------
 
-        missing_skills = (
-            required_skill_names
-            - user_skill_names
-        )
+        matched_skills = []
+
+        below_required_skills = []
+
+        missing_skills = []
+
+        for required in required_skills:
+
+            skill_name = (
+                required.skill.skill_name.lower()
+            )
+
+            required_level = (
+                required.minimum_level
+                or "Beginner"
+            ).lower()
+
+            # User doesn't have the skill
+            if skill_name not in user_skill_levels:
+
+                missing_skills.append(
+                    {
+                        "skill": required.skill.skill_name,
+                        "required_level": (
+                            required.minimum_level
+                        )
+                    }
+                )
+
+            else:
+
+                user_level = user_skill_levels[
+                    skill_name
+                ]["level"]
+
+                user_display_level = user_skill_levels[
+                    skill_name
+                ]["display_level"]
+
+                user_level_value = level_order.get(
+                    user_level,
+                    0
+                )
+
+                required_level_value = level_order.get(
+                    required_level,
+                    0
+                )
+
+                # User meets required level
+                if user_level_value >= required_level_value:
+
+                    matched_skills.append(
+                        {
+                            "skill": required.skill.skill_name,
+                            "required_level": (
+                                required.minimum_level
+                            ),
+                            "user_level": (
+                                user_display_level
+                            )
+                        }
+                    )
+
+                # User has skill but level is too low
+                else:
+
+                    below_required_skills.append(
+                        {
+                            "skill": required.skill.skill_name,
+                            "required_level": (
+                                required.minimum_level
+                            ),
+                            "user_level": (
+                                user_display_level
+                            )
+                        }
+                    )
 
         # --------------------------------
-        # 7. Calculate readiness
+        # Readiness calculation
         # --------------------------------
 
-        total_required = len(
-            required_skill_names
-        )
+        total_required = required_skills.count()
+
+        matched_count = len(matched_skills)
 
         if total_required > 0:
 
             readiness = (
-                len(matched_skills)
+                matched_count
                 / total_required
             ) * 100
 
@@ -163,24 +241,37 @@ class SkillGapAnalysisView(APIView):
 
             readiness = 0
 
+        # --------------------------------
+        # Response
+        # --------------------------------
+
         return Response(
             {
                 "role_id": role.role_id,
+
                 "role_name": role.role_name,
 
-                "total_required_skills":
-                    total_required,
+                "total_required_skills": (
+                    total_required
+                ),
 
-                "matched_skills":
-                    sorted(matched_skills),
+                "matched_skills": (
+                    matched_skills
+                ),
 
-                "missing_skills":
-                    sorted(missing_skills),
+                "below_required_level": (
+                    below_required_skills
+                ),
 
-                "readiness_percentage":
-                    round(readiness, 2)
+                "missing_skills": (
+                    missing_skills
+                ),
+
+                "readiness_percentage": round(
+                    readiness,
+                    2
+                )
             },
 
             status=status.HTTP_200_OK
         )
-

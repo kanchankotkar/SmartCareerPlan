@@ -10,13 +10,7 @@
 #     "target_role": null
 # }
 
-# POST http://127.0.0.1:8000/api/accounts/login/
-# Content-Type: application/json
 
-# {
-#     "email": "kanchan@gmail.com",
-#     "password": "Kanchan123"
-# }
 
 # POST http://127.0.0.1:8000/api/accounts/login/
 # Content-Type: application/json
@@ -54,12 +48,156 @@
 
 # GET http://127.0.0.1:8000/api/careers/1/skills/
 
+# POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM5MTM3LCJpYXQiOjE3OTA5Mzg4MzcsImp0aSI6IjZmNDNkOTc1OWRmYTRlMDM4M2JmNmExMjQ0YWEzNWVlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.grMV3oFel41Kvj1J4JyFLzkQj4KOvxInM7qX659qFSQ
+
+# {
+#     "role_id": 1
+# }
+
+# POST http://127.0.0.1:8000/api/learning/roadmap/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM5NzE3LCJpYXQiOjE3OTA5Mzk0MTcsImp0aSI6ImEwM2RmNDljMDQzZjRiNDc4MjYzOGMzZjJkZjczNDMzIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.bnH2ilK7xgEZ_BOFCgyRymN5mBTnPIbEj3TiONJOAd0 
+
+# {
+#     "role_id": 1
+# }
+
+
+
+
+
+
+
+
+# POST http://127.0.0.1:8000/api/learning/roadmap/
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDM0NjIzLCJpYXQiOjE3OTEwMzQzMjMsImp0aSI6ImZiNTBmNTZiYjk5YjQwMTE5N2Y1ZjVjZTUzOTg0YmIwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.N_Xat0EViKSh1XbJ2_kkFKVuH-ImApDvTf5zNPwc-F0
+
+# {
+#     "role_id": 1
+# }
+
+# GET http://127.0.0.1:8000/api/admin-management/users/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ3NDQ1LCJpYXQiOjE3OTEwNDcxNDUsImp0aSI6ImViN2QyNjBhMWEzZjQ4M2U5ODZhMmZkN2M5NDBiMTNjIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.AQSZ_wNmFdK2mn8LRn9zrKTHHPIMw9J_SiNaA9CzYmU
+
+# POST http://127.0.0.1:8000/api/admin-management/job-roles/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ4Njc0LCJpYXQiOjE3OTEwNDgzNzQsImp0aSI6IjIxN2UzM2YzZGVhMTRjNzNiOGUxNzIzMWUwZGQ0NmY0IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.u4vplkhnimiQKGib1udZPboqBa9wXlzn3orraExK8-w
+# Content-Type: application/json
+
+# {
+#     "role_name": "Data Scientist",
+#     "description": "Responsible for analyzing data and building machine learning models.",
+#     "experience_level": "Intermediate"
+# }
+
+# POST http://127.0.0.1:8000/api/admin-management/job-role-skills/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ5MzE5LCJpYXQiOjE3OTEwNDkwMTksImp0aSI6IjAxNGFhNjhiNDY2MTRlNWZhMzg4YTMyNGQ0YjE5YzJlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.sVoREaUW5lROoYndrhwV0pJev06aRqhCim3aj2aftyE
+# Content-Type: application/json
+
+# {
+#     "role": 2,
+#     "skill": 1,
+#     "importance": "Required",
+#     "minimum_level": "Intermediate"
+# }
+
+# POST http://127.0.0.1:8000/api/admin-management/learning-resources/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ5NzgxLCJpYXQiOjE3OTEwNDk0ODEsImp0aSI6IjA5OWJkY2JiMTYyNjQ5ZTE4YzFhNTllNTJmMjRlOTM1IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.ZyuBUEpQ-gahnPxfIkdVkStlM_fKGdymKPal1LMpGHY
+# Content-Type: application/json
+
+# {
+#     "skill": 1,
+#     "title": "Python Complete Beginner Course",
+#     "description": "Learn Python programming from basics to intermediate level.",
+#     "resource_type": "Course",
+#     "resource_url": "https://example.com/python-course",
+#     "difficulty": "Beginner",
+#     "estimated_hours": 20
+# }
+
+# POST http://127.0.0.1:8000/api/admin-management/learning-resources/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ5NzgxLCJpYXQiOjE3OTEwNDk0ODEsImp0aSI6IjA5OWJkY2JiMTYyNjQ5ZTE4YzFhNTllNTJmMjRlOTM1IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.ZyuBUEpQ-gahnPxfIkdVkStlM_fKGdymKPal1LMpGHY
+# Content-Type: application/json
+
+# {
+#     "skill": 1,
+#     "title": "Python Object Oriented Programming",
+#     "description": "Learn classes, objects, inheritance, polymorphism and encapsulation in Python.",
+#     "resource_type": "Course",
+#     "resource_url": "https://example.com/python-oop",
+#     "difficulty": "Intermediate",
+#     "estimated_hours": 10
+# }
+
+
+# POST http://127.0.0.1:8000/api/admin-management/learning-resources/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDQ5NzgxLCJpYXQiOjE3OTEwNDk0ODEsImp0aSI6IjA5OWJkY2JiMTYyNjQ5ZTE4YzFhNTllNTJmMjRlOTM1IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.ZyuBUEpQ-gahnPxfIkdVkStlM_fKGdymKPal1LMpGHY
+# Content-Type: application/json
+
+# {
+#     "skill": 1,
+#     "title": "Python Coding Practice",
+#     "description": "Practice Python programming problems and improve problem-solving skills.",
+#     "resource_type": "Practice",
+#     "resource_url": "https://example.com/python-practice",
+#     "difficulty": "Intermediate",
+#     "estimated_hours": 15
+# }
+
+# POST http://127.0.0.1:8000/api/admin-management/job-role-skills/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUwMTQyLCJpYXQiOjE3OTEwNDk4NDIsImp0aSI6ImNmNGI3MjAyODYxYTRhMDY5OTA2MzU3NTM1ODJkYTY5IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.nrU3NIqwjZLuVIzHVLCk8e6sneQ2_bHG9NZwKN4PVVk
+# Content-Type: application/json
+
+# {
+#     "role": 2,
+#     "skill": 9,
+#     "importance": "Required",
+#     "minimum_level": "Intermediate"
+# }
+
+# POST http://127.0.0.1:8000/api/admin-management/learning-resources/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUwMTQyLCJpYXQiOjE3OTEwNDk4NDIsImp0aSI6ImNmNGI3MjAyODYxYTRhMDY5OTA2MzU3NTM1ODJkYTY5IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.nrU3NIqwjZLuVIzHVLCk8e6sneQ2_bHG9NZwKN4PVVk
+# Content-Type: application/json
+
+# {
+#     "skill": 9,
+#     "title": "Django Web Development",
+#     "description": "Learn Django fundamentals, models, views, URLs and REST APIs.",
+#     "resource_type": "Course",
+#     "resource_url": "https://example.com/django-course",
+#     "difficulty": "Intermediate",
+#     "estimated_hours": 20
+# }
+
+
+# GET http://127.0.0.1:8000/api/careers/2/skills/
+
+
 POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUyNTgyLCJpYXQiOjE3OTEwNTIyODIsImp0aSI6ImY1YTc4YWE0YjRjODQ5NzRhMmU3MDE3YTZmZGNjNjc3IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.3D9qlbWCXYRAfShEN0bTYuXYMHfPb1qMvE-uoK_qE18
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkwOTM5MTM3LCJpYXQiOjE3OTA5Mzg4MzcsImp0aSI6IjZmNDNkOTc1OWRmYTRlMDM4M2JmNmExMjQ0YWEzNWVlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.grMV3oFel41Kvj1J4JyFLzkQj4KOvxInM7qX659qFSQ
 
 {
-    "role_id": 1
+    "role_id": 2
 }
 
 
+
+# GET http://127.0.0.1:8000/api/analytics/dashboard/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUwMTQyLCJpYXQiOjE3OTEwNDk4NDIsImp0aSI6ImNmNGI3MjAyODYxYTRhMDY5OTA2MzU3NTM1ODJkYTY5IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.nrU3NIqwjZLuVIzHVLCk8e6sneQ2_bHG9NZwKN4PVVk
+
+
+
+
+
+
+
+# POST http://127.0.0.1:8000/api/accounts/login/
+# Content-Type: application/json
+
+# {
+#     "email": "kanchan@gmail.com",
+#     "password": "Kanchan123"
+# }

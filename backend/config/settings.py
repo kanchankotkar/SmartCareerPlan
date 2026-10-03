@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'careers',
     'learning',
     'analytics',
+    'admin_management',
 
 ]
 

@@ -1,0 +1,7 @@
+.\venv\Scripts\Activate.ps1
+
+ python manage.py runserver
+
+
+to chck database
+python manage.py check

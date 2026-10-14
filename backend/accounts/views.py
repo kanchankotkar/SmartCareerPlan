@@ -1,8 +1,10 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
+from rest_framework_simplejwt.exceptions import TokenError
 
-from rest_framework_simplejwt.tokens import RefreshToken
+# from rest_framework_simplejwt.tokens import RefreshToken
 
 from .serializers import RegisterSerializer, LoginSerializer
 from .models import User
@@ -67,6 +69,63 @@ class LoginView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+
+class CustomTokenRefreshView(APIView):
+
+    def post(self, request):
+
+        refresh_token = request.data.get("refresh")
+
+        if not refresh_token:
+            return Response(
+                {"detail": "Refresh token is required"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            # Validate refresh token
+            refresh = RefreshToken(refresh_token)
+
+            # Get our custom user_id from token
+            user_id = refresh.get("user_id")
+
+            if not user_id:
+                return Response(
+                    {"detail": "Invalid refresh token"},
+                    status=status.HTTP_401_UNAUTHORIZED
+                )
+
+            # Find user in our custom users table
+            user = User.objects.get(user_id=user_id)
+
+            # Create new access token
+            access = refresh.access_token
+
+            access["user_id"] = user.user_id
+            access["email"] = user.email
+
+            return Response(
+                {
+                    "access": str(access)
+                },
+                status=status.HTTP_200_OK
+            )
+
+        except User.DoesNotExist:
+
+            return Response(
+                {"detail": "User not found"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        except TokenError:
+
+            return Response(
+                {"detail": "Refresh token is invalid or expired"},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+
 # profile view
 class ProfileView(APIView):
 

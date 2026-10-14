@@ -166,9 +166,9 @@ class SkillGapAnalysisView(APIView):
                 missing_skills.append(
                     {
                         "skill": required.skill.skill_name,
-                        "required_level": (
-                            required.minimum_level
-                        )
+                        "current_level": None,
+                        "required_level": required.minimum_level,
+                        "status": "Missing"
                     }
                 )
 
@@ -198,12 +198,9 @@ class SkillGapAnalysisView(APIView):
                     matched_skills.append(
                         {
                             "skill": required.skill.skill_name,
-                            "required_level": (
-                                required.minimum_level
-                            ),
-                            "user_level": (
-                                user_display_level
-                            )
+                            "current_level": user_display_level,
+                            "required_level": required.minimum_level,
+                            "status": "Matched"
                         }
                     )
 
@@ -213,12 +210,9 @@ class SkillGapAnalysisView(APIView):
                     below_required_skills.append(
                         {
                             "skill": required.skill.skill_name,
-                            "required_level": (
-                                required.minimum_level
-                            ),
-                            "user_level": (
-                                user_display_level
-                            )
+                            "current_level": user_display_level,
+                            "required_level": required.minimum_level,
+                            "status": "Below Required Level"
                         }
                     )
 

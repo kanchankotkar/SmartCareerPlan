@@ -175,29 +175,215 @@
 # GET http://127.0.0.1:8000/api/careers/2/skills/
 
 
-POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUyNTgyLCJpYXQiOjE3OTEwNTIyODIsImp0aSI6ImY1YTc4YWE0YjRjODQ5NzRhMmU3MDE3YTZmZGNjNjc3IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.3D9qlbWCXYRAfShEN0bTYuXYMHfPb1qMvE-uoK_qE18
-Content-Type: application/json
-
-{
-    "role_id": 2
-}
-
-
-
-# GET http://127.0.0.1:8000/api/analytics/dashboard/
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDUwMTQyLCJpYXQiOjE3OTEwNDk4NDIsImp0aSI6ImNmNGI3MjAyODYxYTRhMDY5OTA2MzU3NTM1ODJkYTY5IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.nrU3NIqwjZLuVIzHVLCk8e6sneQ2_bHG9NZwKN4PVVk
-
-
-
-
-
-
-
-# POST http://127.0.0.1:8000/api/accounts/login/
+# POST http://127.0.0.1:8000/api/learning/roadmap/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDg5MDYxLCJpYXQiOjE3OTEwODg3NjEsImp0aSI6ImY0YTlkMWQwMjBiYjQ2ZGQ4NzhhMGY3ZjhlZGMyMTY1IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.tDSaWCkBzvL-HnahrPF6WHtHOlSqalPBVVHInz4_db4
 # Content-Type: application/json
 
 # {
-#     "email": "kanchan@gmail.com",
-#     "password": "Kanchan123"
+#     "role_id": 2
 # }
+
+
+
+
+# GET http://127.0.0.1:8000/api/admin-management/learning-resources/skill/1/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDg5Njg0LCJpYXQiOjE3OTEwODkzODQsImp0aSI6IjkwOWNhY2NkZTUwODQwYjdiM2QzNWM0YjJhYzVhMGJmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.04lONc2TEYge6s-oGOwn2ktZ9HzhwUXtk8bAmXsp3o4
+
+# GET http://127.0.0.1:8000/api/analytics/dashboard/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDg5Njg0LCJpYXQiOjE3OTEwODkzODQsImp0aSI6IjkwOWNhY2NkZTUwODQwYjdiM2QzNWM0YjJhYzVhMGJmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.04lONc2TEYge6s-oGOwn2ktZ9HzhwUXtk8bAmXsp3o4
+
+
+# GET http://127.0.0.1:8000/api/admin-management/learning-resources/skill/1/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDkwMDYwLCJpYXQiOjE3OTEwODk3NjAsImp0aSI6IjhlZTlhYjhlMzM4NzRlM2I4MDU4NjViMTQwYjM0Y2UwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.cZxRoRb48xUJdBoyciPdVl2DVKWFPfC1L8SWDJS7WwU
+
+# GET http://127.0.0.1:8000/api/admin-management/learning-resources/skill/999/
+
+# PATCH http://127.0.0.1:8000/api/admin-management/learning-resources/13/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDkxMDE1LCJpYXQiOjE3OTEwOTA3MTUsImp0aSI6IjVlOThkYjg5YTVmNzQxNmFiNzE5MDAxYzUwMjk3ZmY2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.NeN42IqHrmb4XLjrNGVbKBu8KsWXnrjMOJkDfhvYWXM
+# Content-Type: application/json
+
+# {
+#     "title": "Python Beginner Programming Course"
+# }
+
+# GET http://127.0.0.1:8000/api/admin-management/learning-resources/skill/1/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDkyMTYwLCJpYXQiOjE3OTEwOTE4NjAsImp0aSI6IjQwNTc2YWRiYzQyYjQwOTk5ZDE4YTczYzQzZGI5ZGEzIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.3OWbBWvSnQThuSn9-RI2_TDdeaJDpnNGSC5Nj0WIiLA
+
+
+# GET http://127.0.0.1:8000/api/admin-management/job-roles/list/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDkzODUyLCJpYXQiOjE3OTEwOTM1NTIsImp0aSI6IjMwOGRmNGIzYjRjODRkMjZiYTY0NDgzODc5ZDljOTE5IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.r1GkjMNQ2EAGrXf7lB2VnIeZ-yZ-7SE8HUyQwHWBBcs
+
+# PATCH http://127.0.0.1:8000/api/admin-management/learning-resources/16/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDkzMjAzLCJpYXQiOjE3OTEwOTI5MDMsImp0aSI6ImIwNjBhYjdmYmRjYTRhOWY4MDI3MzNjYWIxZmJhZDY3IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.YMJbtQxnRpuhEeM6dO6VifKWWonu8gjdi34Teggr7_c
+# Content-Type: application/json
+
+# {
+#     "resource_url": "https://docs.djangoproject.com/en/stable/"
+# }
+
+# GET http://127.0.0.1:8000/api/admin-management/job-roles/list/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTA5MDU2LCJpYXQiOjE3OTExMDg3NTYsImp0aSI6ImVhM2QwZjBjOWVkZTQzOTViYWE5NWZjZGJmYTk2MGQ2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.PYLAsYH1GjwUbDyHyEtGT555M227Zr8OKngi5Qu5xTw
+
+# PUT http://127.0.0.1:8000/api/admin-management/job-roles/6/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMDk1NDczLCJpYXQiOjE3OTEwOTUxNzMsImp0aSI6IjdmMzRlMzg3NWUyZDRiZGJhZjM1MjhlNDcxNzA1ZTA3IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.fZHIBCIOV4TOz2zIcEr43FIWwiDjNQANBTcj1Wza5ck
+# Content-Type: application/json
+
+# {
+#     "description": "Analyze complex datasets and build machine learning models for business decisions."
+# }
+
+# PATCH http://127.0.0.1:8000/api/admin-management/job-roles/6/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTA5NjMzLCJpYXQiOjE3OTExMDkzMzMsImp0aSI6IjUzYTRjYzI2YTJkYzRmYzA5YTgwZTA2MDkyYTA3MTZmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.JYo6gx5Uay8kxHsQG2K3GJdhRY-XUzJGtu5q26pwxNk
+# Content-Type: application/json
+
+# {
+#     "description": "Analyze complex datasets and build machine learning models for business decisions."
+# }
+
+
+# DELETE http://127.0.0.1:8000/api/admin-management/job-roles/6/delete/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEwNjg2LCJpYXQiOjE3OTExMTAzODYsImp0aSI6IjE4MmNjMGY2ZjFhNTQ4Y2U4NDBiOGY5MGM1MWFlZTAwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.9r2Ts-8XAQgA5VQufh5uL6Lfeh4iytLGqX6eH8mmgr0
+
+# GET http://127.0.0.1:8000/api/admin-management/job-roles/1/skills/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTExMjQ4LCJpYXQiOjE3OTExMTA5NDgsImp0aSI6ImQ3ZjQwNjFjYjg3NjQ4ZTViOWM0MDg5NTM3MTdlZGFhIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.87oqFfZTAZqp9Kx7jbyADOdoaBRtwDm-NykWcHIQ5L8
+
+
+
+# PATCH http://127.0.0.1:8000/api/admin-management/job-role-skills/1/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTExNzczLCJpYXQiOjE3OTExMTE0NzMsImp0aSI6IjdhNTY1M2IzMTQxNjRlNGI4MDJkY2M1MjdiZDRhZTYzIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.Zz4og7dMmbgWgF3TmCk3QxaPjS9zDaTUZ8vXrUuXj3g
+# Content-Type: application/json
+
+# {
+#     "minimum_level": "Advanced"
+# }
+
+# DELETE http://127.0.0.1:8000/api/admin-management/job-role-skills/1/delete/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEyMDg1LCJpYXQiOjE3OTExMTE3ODUsImp0aSI6IjAzODM5ZTRjZDQ2MTRmODFhYjRjZjE0Mzc2N2RmZjBkIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.lp8DuTtyPlndB_Tj2yBcRE37lb7HWgSR6oCN_JwwAVI
+
+# GET http://127.0.0.1:8000/api/admin-management/skills/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEyMzk3LCJpYXQiOjE3OTExMTIwOTcsImp0aSI6ImZjNGRjNDFjY2FiMDRkODE4MDAxMjczMDEzNDE5NWY2IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.jP63WMBkzG5a7W59GWzjiXxjG3O0DTr9A5lHQhuVD9U
+
+
+# POST http://127.0.0.1:8000/api/admin-management/skills/create/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEyNzExLCJpYXQiOjE3OTExMTI0MTEsImp0aSI6IjU4MzMwNDljOWRkMDQ0MmFhZThkNWQwYjA3NzA1ZDAwIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.q-jMNfUbDyvoz6zkW3LaufJtj5ep-v09NtOsiC-REkk
+# Content-Type: application/json
+
+# {
+#     "skill_name": "PySpark",
+#     "category": "Data Engineering",
+#     "description": "Python API for Apache Spark"
+# }
+
+
+# PATCH http://127.0.0.1:8000/api/admin-management/skills/18/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEzMDEyLCJpYXQiOjE3OTExMTI3MTIsImp0aSI6IjFlY2IwNDM5MzU1ZTRiNGRiMmIzNWM2YzU5NDZmMTc4IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.gMpYz0N60FssiddLxC2kuC8CiX8Kr4ySZgZfB-n8CxU
+# Content-Type: application/json
+
+# {
+#     "category": "Big Data",
+#     "description": "Python API for large-scale data processing with Apache Spark"
+# }
+
+# DELETE http://127.0.0.1:8000/api/admin-management/skills/18/delete/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEzNjI5LCJpYXQiOjE3OTExMTMzMjksImp0aSI6IjZhMTY5MjdjYTg3ODQzNDk4MTRkNWRjMDhjZjUyMmE0IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.NVjs72JOwbl7zwGWBNLTtB_4aPobR2apKhYPsMF1N34
+
+# GET http://127.0.0.1:8000/api/admin-management/dashboard/stats/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTEzODYxLCJpYXQiOjE3OTExMTM1NjEsImp0aSI6IjE5Mjc0NWZkZWViOTQyMTliZDFhZjBiYjIyMWFlNjFmIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.ZxwZjUk97KDCl4PCFB87xwKrzPHysPPYEbObHqjZjec
+
+# PATCH http://127.0.0.1:8000/api/admin-management/users/1/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE0NTYwLCJpYXQiOjE3OTExMTQyNjAsImp0aSI6ImY1NzUyZDg5NTRmMDQ0YzI5YzQ4MGY5NWFhNTA2ZTdlIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.rxpqthYq5W5puoN6yXtXGCR4IA87xWlpgu90iUuOFIA
+# Content-Type: application/json
+
+# {
+#     "experience_years": 1.5,
+#     "education": "MCA"
+# }
+
+# DELETE http://127.0.0.1:8000/api/admin-management/users/1/delete/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE1NDA2LCJpYXQiOjE3OTExMTUxMDYsImp0aSI6IjQzYWY0NmExNDVkMTRjNTRhMDE2MzQ5M2FlN2MwZjFiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.Cs18cTjTD7tzSksn7vL_SrRosm2MEPKIKt-k_nJXFiE
+
+# GET http://127.0.0.1:8000/api/admin-management/dashboard/stats/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE1NDA2LCJpYXQiOjE3OTExMTUxMDYsImp0aSI6IjQzYWY0NmExNDVkMTRjNTRhMDE2MzQ5M2FlN2MwZjFiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.Cs18cTjTD7tzSksn7vL_SrRosm2MEPKIKt-k_nJXFiE
+
+# GET http://127.0.0.1:8000/api/admin-management/dashboard/stats/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE4NDU3LCJpYXQiOjE3OTExMTgxNTcsImp0aSI6IjkyOGRlOWIwYzFmNjQzMmFiYWYwZWIzNDY4OWMzNzQyIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.FmU2p0gM5vqkBd9PnyDbv-6OyCUih5jdEnJGCe-7fCs
+
+# POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5NDIzLCJpYXQiOjE3OTExMTkxMjMsImp0aSI6ImFlODcwZmExZDQ1NTRkYThiM2FhM2M0MTg0NTc5YTdiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.KSVAdS4E1FfK7CIUj72yfyYSbeX0y4PmEtubmuzvEd0
+# Content-Type: application/json
+
+# {
+#     "role_id": 1
+# }
+
+# POST http://127.0.0.1:8000/api/skills/user/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5NDIzLCJpYXQiOjE3OTExMTkxMjMsImp0aSI6ImFlODcwZmExZDQ1NTRkYThiM2FhM2M0MTg0NTc5YTdiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.KSVAdS4E1FfK7CIUj72yfyYSbeX0y4PmEtubmuzvEd0
+# Content-Type: application/json
+
+# {
+#     "skill_id": 2,
+#     "skill_level": "Beginner",
+#     "years_experience": 0.5
+# }
+# GET http://127.0.0.1:8000/api/skills/user/my/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5MDg1LCJpYXQiOjE3OTExMTg3ODUsImp0aSI6ImVlYWJlNDZkMzcwNDQxYTQ4NTNjMDAzMDY4NjdmZTBiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.X_9O_ZUQwnxB3-wfBf2ms18M40f54TyDyAS-LNl6oQg
+
+# POST http://127.0.0.1:8000/api/skills/user/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5NDIzLCJpYXQiOjE3OTExMTkxMjMsImp0aSI6ImFlODcwZmExZDQ1NTRkYThiM2FhM2M0MTg0NTc5YTdiIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.KSVAdS4E1FfK7CIUj72yfyYSbeX0y4PmEtubmuzvEd0
+# Content-Type: application/json
+
+# {
+#     "skill": 2,
+#     "skill_level": "Beginner",
+#     "years_experience": 0.5
+# }
+# PATCH http://127.0.0.1:8000/api/skills/user/2/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5ODkyLCJpYXQiOjE3OTExMTk1OTIsImp0aSI6IjkzMDY5NzIzMzM3YjQ1NTdiMzBjNWIyZDgzN2RlNzJhIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.jiLXeVWkgMqLCH1LHEoxqzxWRv-dj3URYcHEZi4V5ko
+# Content-Type: application/json
+
+# {
+#     "skill_level": "Intermediate",
+#     "years_experience": 1.0
+# }
+
+# GET http://127.0.0.1:8000/api/skills/user/my/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5ODkyLCJpYXQiOjE3OTExMTk1OTIsImp0aSI6IjkzMDY5NzIzMzM3YjQ1NTdiMzBjNWIyZDgzN2RlNzJhIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.jiLXeVWkgMqLCH1LHEoxqzxWRv-dj3URYcHEZi4V5ko
+
+# POST http://127.0.0.1:8000/api/careers/skill-gap/analyze/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTE5ODkyLCJpYXQiOjE3OTExMTk1OTIsImp0aSI6IjkzMDY5NzIzMzM3YjQ1NTdiMzBjNWIyZDgzN2RlNzJhIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.jiLXeVWkgMqLCH1LHEoxqzxWRv-dj3URYcHEZi4V5ko
+# Content-Type: application/json
+
+# {
+#     "role_id": 1
+# }
+# GET http://127.0.0.1:8000/api/learning/roadmap/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTIwNzA5LCJpYXQiOjE3OTExMjA0MDksImp0aSI6IjY5NDE2MmY0MTRiZTRlNTJiNThjZDdmZjhmZTEyZTk0IiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.3209h4_-fIGO43yP5DVO8htefywHgWHTN2l6uEy0Vvs
+
+
+
+# POST http://127.0.0.1:8000/api/learning/progress/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTI5MTQxLCJpYXQiOjE3OTExMjg4NDEsImp0aSI6ImMzZGViNTExMjczYTQyZWI5OTc4MmU4N2IwYThjZmMxIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.aZJ1cTDwf_SuNAsfFMfm1IQJZqaW87TVdxi4yIEWsus
+# Content-Type: application/json
+
+# {
+#     "resource_id": 3,
+#     "progress_percentage": 100
+# }
+
+# POST http://127.0.0.1:8000/api/learning/roadmap/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzkxMTMxMTk2LCJpYXQiOjE3OTExMzA4OTYsImp0aSI6ImFmNzMxMTUzYTA2MzRlMGJhMmJlMmU1NzY5MWY1NTIzIiwidXNlcl9pZCI6MSwiZW1haWwiOiJrYW5jaGFuQGdtYWlsLmNvbSJ9.y7ueMz2NUkIlsmRw2ssiyJYbkBw0ojlS7S1pZFWYsQA
+# Content-Type: application/json
+
+# {
+#     "role_id": 1
+# }
+
+
+
+POST http://127.0.0.1:8000/api/accounts/login/
+Content-Type: application/json
+
+{
+    "email": "kanchan@gmail.com",
+    "password": "Kanchan123"
+}

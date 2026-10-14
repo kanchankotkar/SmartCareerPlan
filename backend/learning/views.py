@@ -17,7 +17,9 @@ from .serializers import (
 
 class LearningRoadmapView(APIView):
 
-    authentication_classes = [CustomJWTAuthentication]
+    authentication_classes = [
+        CustomJWTAuthentication
+    ]
 
     def post(self, request):
 
@@ -31,7 +33,6 @@ class LearningRoadmapView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        # Find job role
         role = JobRole.objects.filter(
             role_id=role_id
         ).first()
@@ -44,37 +45,115 @@ class LearningRoadmapView(APIView):
                 status=status.HTTP_404_NOT_FOUND
             )
 
-        # Get required skills for the role
+        # --------------------------------
+        # Skill level hierarchy
+        # --------------------------------
+
+        level_order = {
+            "beginner": 1,
+            "intermediate": 2,
+            "advanced": 3
+        }
+
+        # --------------------------------
+        # Get required skills
+        # --------------------------------
+
         required_skills = JobRoleSkill.objects.filter(
             role=role
         ).select_related('skill')
 
+        # --------------------------------
         # Get user's skills
+        # --------------------------------
+
         user_skills = UserSkill.objects.filter(
             user=request.user
         ).select_related('skill')
 
-        # Convert user skills into skill IDs
-        user_skill_ids = {
-            user_skill.skill.skill_id
-            for user_skill in user_skills
-        }
+        user_skill_levels = {}
 
-        # Find missing skills
-        missing_skills = []
+        for user_skill in user_skills:
+
+            skill_id = user_skill.skill.skill_id
+
+            user_level = (
+                user_skill.skill_level
+                or "Beginner"
+            ).lower()
+
+            user_skill_levels[skill_id] = user_level
+
+        # --------------------------------
+        # Find skills needing learning
+        # --------------------------------
+
+        roadmap_skills = []
 
         for required in required_skills:
 
-            if required.skill.skill_id not in user_skill_ids:
+            skill_id = required.skill.skill_id
 
-                missing_skills.append(
-                    required.skill
+            required_level = (
+                required.minimum_level
+                or "Beginner"
+            ).lower()
+
+            # User doesn't have skill
+            if skill_id not in user_skill_levels:
+
+                roadmap_skills.append(
+                    {
+                        "skill": required.skill,
+                        "reason": "Missing",
+                        "current_level": None,
+                        "required_level": (
+                            required.minimum_level
+                        )
+                    }
                 )
 
-        # Find learning resources
+            else:
+
+                user_level = user_skill_levels[
+                    skill_id
+                ]
+
+                user_level_value = level_order.get(
+                    user_level,
+                    0
+                )
+
+                required_level_value = level_order.get(
+                    required_level,
+                    0
+                )
+
+                # User has skill but level is too low
+                if user_level_value < required_level_value:
+
+                    roadmap_skills.append(
+                        {
+                            "skill": required.skill,
+                            "reason": "Below Required Level",
+                            "current_level": (
+                                user_level.title()
+                            ),
+                            "required_level": (
+                                required.minimum_level
+                            )
+                        }
+                    )
+
+        # --------------------------------
+        # Build roadmap
+        # --------------------------------
+
         roadmap = []
 
-        for skill in missing_skills:
+        for item in roadmap_skills:
+
+            skill = item["skill"]
 
             resources = LearningResource.objects.filter(
                 skill=skill
@@ -90,6 +169,17 @@ class LearningRoadmapView(APIView):
                     "skill_id": skill.skill_id,
                     "skill_name": skill.skill_name,
                     "category": skill.category,
+
+                    "reason": item["reason"],
+
+                    "current_level": (
+                        item["current_level"]
+                    ),
+
+                    "required_level": (
+                        item["required_level"]
+                    ),
+
                     "resources": serializer.data
                 }
             )
@@ -98,12 +188,16 @@ class LearningRoadmapView(APIView):
             {
                 "role_id": role.role_id,
                 "role_name": role.role_name,
-                "total_missing_skills": len(missing_skills),
+
+                "total_learning_skills": (
+                    len(roadmap_skills)
+                ),
+
                 "learning_roadmap": roadmap
             },
+
             status=status.HTTP_200_OK
         )
-
 class LearningProgressView(APIView):
 
     authentication_classes = [CustomJWTAuthentication]

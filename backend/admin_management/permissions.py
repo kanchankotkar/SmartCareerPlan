@@ -5,7 +5,12 @@ class IsAdminUser(BasePermission):
 
     def has_permission(self, request, view):
 
-        return (
-            request.user
-            and request.user.is_admin
-        )
+        user = request.user
+
+        if not user:
+            return False
+
+        if user.__class__.__name__ == "AnonymousUser":
+            return False
+
+        return getattr(user, "is_admin", False)

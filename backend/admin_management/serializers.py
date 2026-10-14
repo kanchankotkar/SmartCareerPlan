@@ -69,9 +69,10 @@ class AdminLearningResourceSerializer(serializers.ModelSerializer):
         read_only=True
     )
 
+    resource_url = serializers.URLField()
+
     class Meta:
         model = LearningResource
-
         fields = [
             'resource_id',
             'skill',
@@ -89,3 +90,28 @@ class AdminLearningResourceSerializer(serializers.ModelSerializer):
             'resource_id',
             'created_at'
         ]
+class AdminJobRoleWithSkillsSerializer(serializers.ModelSerializer):
+
+    skills = serializers.SerializerMethodField()
+
+    class Meta:
+        model = JobRole
+        fields = [
+            'role_id',
+            'role_name',
+            'description',
+            'experience_level',
+            'created_at',
+            'skills'
+        ]
+
+    def get_skills(self, obj):
+
+        role_skills = JobRoleSkill.objects.filter(
+            role=obj
+        ).select_related('skill')
+
+        return AdminJobRoleSkillSerializer(
+            role_skills,
+            many=True
+        ).data        

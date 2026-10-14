@@ -102,4 +102,47 @@ class MySkillsView(APIView):
         return Response(
             data,
             status=status.HTTP_200_OK
-        )        
+        )  
+
+class UserSkillUpdateView(APIView):
+
+    authentication_classes = [
+        CustomJWTAuthentication
+    ]
+
+    def patch(self, request, user_skill_id):
+
+        user_skill = UserSkill.objects.filter(
+            user_skill_id=user_skill_id,
+            user=request.user
+        ).first()
+
+        if not user_skill:
+            return Response(
+                {"error": "User skill not found"},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        skill_level = request.data.get("skill_level")
+        years_experience = request.data.get("years_experience")
+
+        if skill_level:
+            user_skill.skill_level = skill_level
+
+        if years_experience is not None:
+            user_skill.years_experience = years_experience
+
+        user_skill.save()
+
+        return Response(
+            {
+                "message": "User skill updated successfully",
+                "user_skill_id": user_skill.user_skill_id,
+                "skill": user_skill.skill.skill_name,
+                "skill_level": user_skill.skill_level,
+                "years_experience": float(
+                    user_skill.years_experience
+                )
+            },
+            status=status.HTTP_200_OK
+        )          

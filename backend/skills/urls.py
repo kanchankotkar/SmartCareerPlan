@@ -3,7 +3,8 @@ from django.urls import path
 from .views import (
     SkillListView,
     AddUserSkillView,
-    MySkillsView
+    MySkillsView,
+    UserSkillUpdateView,
 )
 
 
@@ -26,5 +27,10 @@ urlpatterns = [
     MySkillsView.as_view(),
     name='my-skills'
     ),
+    path(
+    'user/<int:user_skill_id>/',
+    UserSkillUpdateView.as_view(),
+    name='user-skill-update'
+),
 
 ]

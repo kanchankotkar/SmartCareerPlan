@@ -3,28 +3,33 @@ from django.urls import path
 from .views import (
     RegisterView,
     LoginView,
-    ProfileView
+    ProfileView,
+    CustomTokenRefreshView
 )
-
 
 urlpatterns = [
 
     path(
-        'register/',
+        "register/",
         RegisterView.as_view(),
-        name='register'
+        name="register"
     ),
 
     path(
-        'login/',
+        "login/",
         LoginView.as_view(),
-        name='login'
+        name="login"
     ),
 
     path(
-        'profile/',
+        "profile/",
         ProfileView.as_view(),
-        name='profile'
+        name="profile"
     ),
 
+    path(
+        "token/refresh/",
+        CustomTokenRefreshView.as_view(),
+        name="token_refresh"
+    ),
 ]

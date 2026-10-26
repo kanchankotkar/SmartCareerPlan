@@ -34,9 +34,9 @@ urlpatterns = [
     name='user-skill-update'
     ),
    path(
-    'user/<int:user_skill_id>/',
-    UserSkillDeleteView.as_view(),
-    name='user-skill-delete'
+        "user/<int:user_skill_id>/delete/",
+        UserSkillDeleteView.as_view(),
+        name="user-skill-delete",
     ),
 
 ]

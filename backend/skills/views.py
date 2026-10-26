@@ -146,6 +146,25 @@ class UserSkillUpdateView(APIView):
             },
             status=status.HTTP_200_OK
         ) 
+    def delete(self, request, user_skill_id):
+        user_skill = UserSkill.objects.filter(
+            user_skill_id=user_skill_id,
+            user=request.user,
+        ).first()
+
+        if user_skill is None:
+            return Response(
+                {"error": "User skill not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        skill_name = user_skill.skill.skill_name
+        user_skill.delete()
+
+        return Response(
+            {"message": f"{skill_name} removed from your skills."},
+            status=status.HTTP_200_OK,
+        )
 
 
 

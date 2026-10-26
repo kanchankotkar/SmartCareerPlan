@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(
-    !!localStorage.getItem("access_token")
+    Boolean(localStorage.getItem("access_token"))
   );
 
   const handleLogin = () => {

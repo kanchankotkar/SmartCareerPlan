@@ -80,15 +80,22 @@ function Dashboard() {
     )
   );
 
-  const requiredSkills = Number(skills.total_required_skills) || 0;
-  const matchedSkills = Number(skills.matched_skills) || 0;
-  const missingSkills = Number(skills.missing_skills) || 0;
-  const totalResources =
-    Number(learning.total_learning_resources) || 0;
-  const completedResources =
-    Number(learning.completed_resources) || 0;
+  const requiredSkills =
+  Number(readinessData.total_required_skills) || 0;
 
-  const learningProgress =
+const matchedSkills =
+  Number(readinessData.matched_skills) || 0;
+
+const missingSkills =
+  Number(readinessData.missing_skills) || 0;
+
+const totalResources =
+  Number(learning.total_resources) || 0;
+
+const completedResources =
+  Number(learning.completed_resources) || 0;
+
+const learningProgress =
     totalResources > 0
       ? Math.min(100, (completedResources / totalResources) * 100)
       : 0;

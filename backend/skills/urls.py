@@ -5,6 +5,7 @@ from .views import (
     AddUserSkillView,
     MySkillsView,
     UserSkillUpdateView,
+    UserSkillDeleteView,
 )
 
 
@@ -31,6 +32,11 @@ urlpatterns = [
     'user/<int:user_skill_id>/',
     UserSkillUpdateView.as_view(),
     name='user-skill-update'
-),
+    ),
+   path(
+    'user/<int:user_skill_id>/',
+    UserSkillDeleteView.as_view(),
+    name='user-skill-delete'
+    ),
 
 ]

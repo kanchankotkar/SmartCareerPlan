@@ -1316,6 +1316,28 @@ button {
   letter-spacing: -0.7px;
 }
 
+.logout-button {
+  border: 1px solid #e3e5ef;
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: #ffffff;
+  color: #424665;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.logout-button:hover {
+  background: #f0edff;
+  color: #7058e8;
+}
 /* User profile in top navbar */
 .profile-chip {
   display: flex;
@@ -1489,6 +1511,331 @@ html {
     font-size: 9px;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+}
+
+
+/* Career Readiness page */
+
+.readiness-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 8px 0 28px;
+}
+
+.readiness-hero {
+  padding: 30px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #171b3b, #5141a6);
+  color: #fff;
+}
+
+.readiness-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #c9c1ff;
+}
+
+.readiness-hero h2 {
+  margin: 12px 0 8px;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.readiness-hero > p {
+  max-width: 600px;
+  color: #e1def7;
+  line-height: 1.7;
+}
+
+.readiness-role {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 9px 13px;
+  border: 1px solid #7770b8;
+  border-radius: 10px;
+  color: #f0edff;
+  font-size: 13px;
+}
+
+.readiness-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.readiness-score-card,
+.readiness-stat-card,
+.readiness-panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e9eaf2;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(30, 35, 75, 0.035);
+}
+
+.readiness-score-card {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.readiness-score-ring {
+  display: grid;
+  place-items: center;
+  width: 118px;
+  height: 118px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.readiness-score-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.readiness-score-inner strong {
+  color: #242744;
+  font-size: 25px;
+}
+
+.readiness-score-inner span {
+  margin-top: 3px;
+  color: #8589a4;
+  font-size: 12px;
+}
+
+.readiness-score-card h3,
+.readiness-section-heading h3 {
+  margin: 0 0 8px;
+  color: #242744;
+  font-size: 18px;
+}
+
+.readiness-score-card p,
+.readiness-section-heading p {
+  margin: 0;
+  color: #8589a4;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.readiness-stat-card > span {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #f0edff;
+  color: #7058e8;
+  font-size: 20px;
+}
+
+.readiness-stat-card p {
+  margin: 16px 0 6px;
+  color: #737792;
+  font-size: 13px;
+}
+
+.readiness-stat-card > strong {
+  display: block;
+  color: #242744;
+  font-size: 30px;
+}
+
+.readiness-stat-card small {
+  display: block;
+  margin-top: 6px;
+  color: #8589a4;
+  line-height: 1.5;
+}
+
+.matched-stat > span {
+  background: #e8f7ee;
+  color: #16834a;
+}
+
+.missing-stat > span {
+  background: #fff1e7;
+  color: #c66a24;
+}
+
+.required-stat > span {
+  background: #eaf3ff;
+  color: #3478d4;
+}
+
+.readiness-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.readiness-skill-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.readiness-skill-item,
+.readiness-missing-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eff0f6;
+}
+
+.readiness-skill-item:last-child,
+.readiness-missing-item:last-child {
+  border-bottom: 0;
+}
+
+.readiness-skill-item > strong,
+.missing-skill-content > strong {
+  color: #303451;
+  font-size: 14px;
+}
+
+.readiness-skill-check,
+.missing-skill-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+.readiness-skill-check {
+  background: #e8f7ee;
+  color: #16834a;
+}
+
+.missing-skill-icon {
+  background: #fff1e7;
+  color: #c66a24;
+}
+
+.readiness-status {
+  margin-left: auto;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.matched-label {
+  background: #e8f7ee;
+  color: #16834a;
+}
+
+.missing-label {
+  background: #fff1e7;
+  color: #b96322;
+}
+
+.missing-skill-content {
+  min-width: 0;
+}
+
+.missing-skill-content p {
+  margin: 5px 0 0;
+  color: #8589a4;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.readiness-count {
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: #fff1e7;
+  color: #b96322;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.readiness-empty {
+  margin: 0;
+  padding: 18px;
+  border-radius: 12px;
+  background: #f8f8fc;
+  color: #737792;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.readiness-note {
+  padding: 18px 20px;
+  border: 1px solid #e5e0ff;
+  border-radius: 14px;
+  background: #f5f3ff;
+}
+
+.readiness-note strong {
+  color: #4c3ca5;
+  font-size: 13px;
+}
+
+.readiness-note p {
+  margin: 8px 0 0;
+  color: #68648b;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (min-width: 1100px) {
+  .readiness-score-card {
+    grid-column: auto;
+    grid-row: span 2;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .readiness-overview {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .readiness-hero {
+    padding: 22px;
+  }
+
+  .readiness-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .readiness-score-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .readiness-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .readiness-skill-item,
+  .readiness-missing-item {
+    flex-wrap: wrap;
+  }
+
+  .readiness-status {
+    margin-left: 0;
   }
 }
 

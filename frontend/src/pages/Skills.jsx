@@ -154,7 +154,7 @@ function Skills() {
   }
 
   return (
-    <main className="skills-page">
+    <div className="skills-page">
       <header className="skills-header">
         <div>
           <p className="skills-eyebrow">CAREER DEVELOPMENT</p>
@@ -308,7 +308,7 @@ function Skills() {
           </div>
         )}
       </section>
-    </main>
+    </div>
   );
 }
 

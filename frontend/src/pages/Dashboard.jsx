@@ -1,12 +1,13 @@
-
 import { useEffect, useState } from "react";
 import { getDashboard } from "../api/dashboardApi";
 import "./Dashboard.css";
+import Skills from "./Skills";
 
-function Dashboard() {
+function Dashboard({ onLogout }) {
   const [dashboard, setDashboard] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState("dashboard");
 
   useEffect(() => {
     let isMounted = true;
@@ -92,13 +93,16 @@ const missingSkills =
 const totalResources =
   Number(learning.total_resources) || 0;
 
+const startedResources =
+  Number(learning.started_resources) || 0;
+
 const completedResources =
   Number(learning.completed_resources) || 0;
 
-const learningProgress =
-    totalResources > 0
-      ? Math.min(100, (completedResources / totalResources) * 100)
-      : 0;
+const learningProgress = Math.min(
+  100,
+  Math.max(0, Number(learning.average_progress) || 0)
+);
 
   return (
     <div className="career-app">
@@ -113,24 +117,50 @@ const learningProgress =
 
         <p className="nav-label">WORKSPACE</p>
 
-        <nav className="sidebar-nav" aria-label="Main navigation">
-          <a href="#overview" className="nav-link active">
-            <span className="nav-icon">▦</span>
-            Dashboard
-          </a>
-          <a href="#readiness" className="nav-link">
-            <span className="nav-icon">◉</span>
-            Career Readiness
-          </a>
-          <a href="#skills" className="nav-link">
-            <span className="nav-icon">◇</span>
-            My Skills
-          </a>
-          <a href="#learning" className="nav-link">
-            <span className="nav-icon">▤</span>
-            Learning Hub
-          </a>
-        </nav>
+         <nav className="sidebar-nav" aria-label="Main navigation">
+            <a
+              href="#overview"
+              className={`nav-link ${
+                currentPage === "dashboard" ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage("dashboard")}
+            >
+              <span className="nav-icon">▦</span>
+              Dashboard
+            </a>
+
+            <a
+              href="#readiness"
+              className="nav-link"
+              onClick={() => setCurrentPage("dashboard")}
+            >
+              <span className="nav-icon">◉</span>
+              Career Readiness
+            </a>
+
+            <a
+              href="#skills"
+              className={`nav-link ${
+                currentPage === "skills" ? "active" : ""
+              }`}
+              onClick={(event) => {
+                event.preventDefault();
+                setCurrentPage("skills");
+              }}
+            >
+              <span className="nav-icon">◇</span>
+              My Skills
+            </a>
+
+            <a
+              href="#learning"
+              className="nav-link"
+              onClick={() => setCurrentPage("dashboard")}
+            >
+              <span className="nav-icon">▤</span>
+              Learning Hub
+            </a>
+          </nav>
 
         <div className="sidebar-bottom">
           <div className="help-card">
@@ -152,10 +182,18 @@ const learningProgress =
       <main className="main-content" id="overview">
         <header className="topbar">
           <div>
-            <p className="breadcrumb">Workspace / Dashboard</p>
-            <h1>Career Dashboard</h1>
-          </div>
+            <p className="breadcrumb">
+                Workspace / {currentPage === "dashboard" ? "Dashboard" : "My Skills"}
+            </p>
 
+              <h1>
+                {currentPage === "dashboard"
+                  ? "Career Dashboard"
+                  : "Skills Management"}
+              </h1>
+          </div>
+            
+         <div className="topbar-actions">
           <div className="profile-chip">
             <div className="avatar">
               {(user.full_name || user.username || "U")
@@ -170,8 +208,18 @@ const learningProgress =
               <span>{user.target_role || "Target role not set"}</span>
             </div>
           </div>
+          <button
+              type="button"
+              className="logout-button"
+              onClick={onLogout}
+            >
+              Logout
+            </button>
+         </div>
         </header>
-
+         
+         {currentPage === "dashboard" ? (
+          <>
         <section className="welcome-banner">
           <div className="welcome-copy">
             <span className="eyebrow">YOUR CAREER, YOUR FUTURE</span>
@@ -422,6 +470,10 @@ const learningProgress =
           <span>SmartCareerPlatform</span>
           <span>Build skills. Track progress. Grow your career.</span>
         </footer>
+          </>
+          ) : (
+            <Skills />
+          )}
       </main>
     </div>
   );

@@ -1,42 +1,132 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+* {
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f5f7fb;
+  color: #172033;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+button {
+  font: inherit;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.app-navbar {
+  min-height: 82px;
+  padding: 14px 5%;
+  background: #ffffff;
+  border-bottom: 1px solid #e7eaf0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: #4338ca;
+  color: white;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.app-brand h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #172554;
+}
+
+.app-brand span {
+  display: block;
+  margin-top: 4px;
+  color: #7b8498;
+  font-size: 11px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-button {
+  padding: 11px 17px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #5d667a;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-button:hover {
+  background: #f0f1ff;
+  color: #4338ca;
+}
+
+.nav-button.active {
+  background: #eeedff;
+  color: #4338ca;
+  font-weight: 700;
+}
+
+.logout-button {
+  padding: 10px 18px;
+  background: white;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.logout-button:hover {
+  background: #fef2f2;
+}
+
+.app-main {
+  width: 100%;
+  min-height: calc(100vh - 82px);
+  padding: 28px 5%;
+}
+
+@media (max-width: 650px) {
+  .app-navbar {
+    padding: 16px;
+    gap: 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-links {
+    order: 3;
+    width: 100%;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .nav-button {
+    flex: 1;
+    padding: 10px 8px;
+    font-size: 13px;
   }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  .app-main {
+    padding: 20px 16px;
+  }
 }

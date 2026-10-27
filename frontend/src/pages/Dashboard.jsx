@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getDashboard } from "../api/dashboardApi";
 import "./Dashboard.css";
 import Skills from "./Skills";
+import CareerReadiness from "./CareerReadiness";
+import LearningHub from "./LearningHub";
 
 function Dashboard({ onLogout }) {
   const [dashboard, setDashboard] = useState(null);
@@ -117,9 +119,10 @@ const learningProgress = Math.min(
 
         <p className="nav-label">WORKSPACE</p>
 
-         <nav className="sidebar-nav" aria-label="Main navigation">
-            <a
-              href="#overview"
+         
+          <nav className="sidebar-nav" aria-label="Main navigation">
+            <button
+              type="button"
               className={`nav-link ${
                 currentPage === "dashboard" ? "active" : ""
               }`}
@@ -127,40 +130,42 @@ const learningProgress = Math.min(
             >
               <span className="nav-icon">▦</span>
               Dashboard
-            </a>
+            </button>
 
-            <a
-              href="#readiness"
-              className="nav-link"
-              onClick={() => setCurrentPage("dashboard")}
+            <button
+              type="button"
+              className={`nav-link ${
+                currentPage === "readiness" ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage("readiness")}
             >
               <span className="nav-icon">◉</span>
               Career Readiness
-            </a>
+            </button>
 
-            <a
-              href="#skills"
+            <button
+              type="button"
               className={`nav-link ${
                 currentPage === "skills" ? "active" : ""
               }`}
-              onClick={(event) => {
-                event.preventDefault();
-                setCurrentPage("skills");
-              }}
+              onClick={() => setCurrentPage("skills")}
             >
               <span className="nav-icon">◇</span>
               My Skills
-            </a>
+            </button>
 
-            <a
-              href="#learning"
-              className="nav-link"
-              onClick={() => setCurrentPage("dashboard")}
+            <button
+              type="button"
+              className={`nav-link ${
+                currentPage === "learning" ? "active" : ""
+              }`}
+              onClick={() => setCurrentPage("learning")}
             >
               <span className="nav-icon">▤</span>
               Learning Hub
-            </a>
+            </button>
           </nav>
+
 
         <div className="sidebar-bottom">
           <div className="help-card">
@@ -183,14 +188,28 @@ const learningProgress = Math.min(
         <header className="topbar">
           <div>
             <p className="breadcrumb">
-                Workspace / {currentPage === "dashboard" ? "Dashboard" : "My Skills"}
+              Workspace / {
+                currentPage === "dashboard"
+                  ? "Dashboard"
+                  : currentPage === "readiness"
+                  ? "Career Readiness"
+                  : currentPage === "skills"
+                  ? "My Skills"
+                  : "Learning Hub"
+              }
             </p>
 
-              <h1>
-                {currentPage === "dashboard"
+            <h1>
+              {
+                currentPage === "dashboard"
                   ? "Career Dashboard"
-                  : "Skills Management"}
-              </h1>
+                  : currentPage === "readiness"
+                  ? "Career Readiness"
+                  : currentPage === "skills"
+                  ? "Skills Management"
+                  : "Learning Hub"
+              }
+            </h1>
           </div>
             
          <div className="topbar-actions">
@@ -234,9 +253,13 @@ const learningProgress = Math.min(
               Understand your strengths, identify skill gaps, and take
               the next step toward your dream career.
             </p>
-            <a className="banner-button" href="#readiness">
-              View career progress <span>→</span>
-            </a>
+            <button
+                type="button"
+                className="banner-button"
+                onClick={() => setCurrentPage("readiness")}
+              >
+                View career progress <span>→</span>
+              </button>
           </div>
 
           <div className="welcome-art" aria-hidden="true">
@@ -420,9 +443,13 @@ const learningProgress = Math.min(
               </div>
             </div>
 
-            <a className="text-link" href="#skills">
-              Review your skills <span>→</span>
-            </a>
+            <button
+                type="button"
+                className="text-link"
+                onClick={() => setCurrentPage("learning")}
+              >
+                Explore Learning Hub <span>→</span>
+              </button>
           </section>
         </div>
 
@@ -471,6 +498,10 @@ const learningProgress = Math.min(
           <span>Build skills. Track progress. Grow your career.</span>
         </footer>
           </>
+          ) : currentPage === "readiness" ? (
+            <CareerReadiness dashboard={dashboard} />
+          ) : currentPage === "learning" ? (
+            <LearningHub />
           ) : (
             <Skills />
           )}

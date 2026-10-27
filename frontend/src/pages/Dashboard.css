@@ -129,6 +129,7 @@ button {
   font-size: 20px;
 }
 
+
 .sidebar-bottom {
   margin-top: auto;
 }
@@ -1756,6 +1757,16 @@ html {
   font-size: 12px;
   line-height: 1.6;
 }
+
+button.text-link {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: #7058e8;
+  font-weight: 600;
+  padding: 8px 0;
+} 
 
 .readiness-count {
   padding: 7px 10px;

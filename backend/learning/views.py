@@ -23,26 +23,23 @@ class LearningRoadmapView(APIView):
 
     def post(self, request):
 
-        role_id = request.data.get('role_id')
+        # First, check whether role_id was sent
+        role_id = request.data.get("role_id")
 
-        if not role_id:
-            return Response(
-                {
-                    "error": "role_id is required"
-                },
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-        role = JobRole.objects.filter(
-            role_id=role_id
-        ).first()
+        if role_id:
+            role = JobRole.objects.filter(
+                role_id=role_id
+            ).first()
+        else:
+            # Use the target role already selected by the user
+            role = request.user.target_role
 
         if not role:
             return Response(
                 {
-                    "error": "Job role not found"
+                    "error": "Please select a target job role first."
                 },
-                status=status.HTTP_404_NOT_FOUND
+                status=status.HTTP_400_BAD_REQUEST
             )
 
         # --------------------------------
